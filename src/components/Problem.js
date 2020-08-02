@@ -28,8 +28,8 @@ const Title = styled.h2`
 const ETestButton = styled(TestButton)`
   ${props =>
     props.animate
-      ? `opacity: 0; transform: translateX(25px);`
-      : `opacity: 1; transition: .5s all ease-in; transform: translateX(0);`}
+      ? `opacity: 0; transform: translateX(25px); pointer-event: none; cursor: default;`
+      : `opacity: 1; transition: .25s all ease-in; transform: translateX(0); pointer-event: all;`}
   &:not(:last-child) {
     margin-bottom: 12px;
   }
