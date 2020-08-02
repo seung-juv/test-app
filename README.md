@@ -1,3 +1,3 @@
 # Test Application
 
-- React JS Test Application
+React JS Test Application
