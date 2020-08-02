@@ -76,20 +76,36 @@ const EProgress = styled(Progress)`
 
 const Test = props => {
   const [nowPage, setNowPage] = useState(1);
+  const [animate, setAnimate] = useState(false);
   const progress = 100 / problems.length * nowPage;
   const theme = useContext(ThemeContext);
   const onSubmit = () => {
     props.history.push("/result");
   };
   const onClick = () => {
-    nowPage < problems.length ? setNowPage(nowPage + 1) : onSubmit();
+    if (nowPage < problems.length) {
+      setNowPage(nowPage + 1);
+      setAnimate(true);
+      setTimeout(() => {
+        setAnimate(false);
+      }, 500);
+    } else {
+      onSubmit();
+    }
   };
   return (
     <Wrapper>
       <ProblemWrapper>
         <ProblemContainer>
           {problems.map((problem, idx) =>
-            <Problem key={idx} idx={idx} {...problem} nowPage={nowPage} onClick={onClick} />
+            <Problem
+              key={idx}
+              idx={idx}
+              {...problem}
+              nowPage={nowPage}
+              onClick={onClick}
+              animate={animate}
+            />
           )}
         </ProblemContainer>
       </ProblemWrapper>

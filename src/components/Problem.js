@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TestButton from "./TestButton";
 
 const Wrapper = styled.section`
   width: 440px;
-  transform: translateX(${props => (props.nowPage - 1) * -440}px);
-  transition: .25s transform ease-out;
+  margin-right: 50px;
+  transform: translateX(${props => (props.nowPage - 1) * -490}px);
+  transition: .35s transform ease-in;
 `;
 
 const Index = styled.h2`
@@ -25,12 +26,16 @@ const Title = styled.h2`
 `;
 
 const ETestButton = styled(TestButton)`
+  ${props =>
+    props.animate
+      ? `opacity: 0; transform: translateX(25px);`
+      : `opacity: 1; transition: .5s all ease-in; transform: translateX(0);`}
   &:not(:last-child) {
     margin-bottom: 12px;
   }
 `;
 
-const Problem = ({ idx = 0, title, test = [], nowPage, onClick }) => {
+const Problem = ({ idx = 0, title, test = [], nowPage, onClick, animate }) => {
   return (
     <Wrapper nowPage={nowPage}>
       <Index>
@@ -39,7 +44,9 @@ const Problem = ({ idx = 0, title, test = [], nowPage, onClick }) => {
       <Title>
         {title}
       </Title>
-      {test.map((test, idx) => <ETestButton key={idx} text={test.text} onClick={onClick} />)}
+      {test.map((test, idx) =>
+        <ETestButton key={idx} text={test.text} animate={animate} onClick={onClick} />
+      )}
     </Wrapper>
   );
 };

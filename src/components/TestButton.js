@@ -20,9 +20,9 @@ const Container = styled.div`
   }
 `;
 
-const TestButton = ({ text, onClick, className }) => {
+const TestButton = ({ text, onClick, className, animate }) => {
   return (
-    <Container onClick={onClick} className={className}>
+    <Container onClick={onClick} className={className} animate={animate}>
       {text}
     </Container>
   );
