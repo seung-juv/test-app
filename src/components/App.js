@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { HashRouter, Route } from "react-router-dom";
-import Intro from "./routes/Intro";
-import Test from "./routes/Test";
-import GlobalStyles from "./Styles/GlobalStyles";
-import theme from "./Styles/theme";
+import Intro from "../routes/Intro";
+import Test from "../routes/Test";
+import GlobalStyles from "../Styles/GlobalStyles";
+import theme from "../Styles/theme";
 
 const Wrapper = styled.section`
   min-width: 350px;
@@ -19,13 +19,15 @@ const Wrapper = styled.section`
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <HashRouter>
-        <Wrapper>
-          <Route path="/" component={Intro} exact={true} />
-          <Route path="/test" component={Test} exact={true} />
-        </Wrapper>
-      </HashRouter>
+      <>
+        <GlobalStyles />
+        <HashRouter>
+          <Wrapper>
+            <Route path="/" component={Intro} exact={true} />
+            <Route path="/test" component={Test} exact={true} />
+          </Wrapper>
+        </HashRouter>
+      </>
     </ThemeProvider>
   );
 };
