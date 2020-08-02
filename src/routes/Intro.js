@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
 
 const Title = styled.h2`
   width: 100%;
@@ -19,18 +18,14 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
-const ELink = styled(Link)`
-  width: 100%;
-  max-width: 300px;
-`;
-
-const Intro = () => {
+const Intro = props => {
+  const onClick = () => {
+    props.history.push("/test");
+  };
   return (
     <Wrapper>
       <Title>테스트</Title>
-      <ELink to="/test">
-        <Button text="테스트 시작하기" />
-      </ELink>
+      <Button onClick={onClick} text="테스트 시작하기" />
     </Wrapper>
   );
 };

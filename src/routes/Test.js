@@ -74,12 +74,15 @@ const EProgress = styled(Progress)`
   overflow: hidden;
 `;
 
-const Test = () => {
+const Test = props => {
   const [nowPage, setNowPage] = useState(1);
   const progress = 100 / problems.length * nowPage;
   const theme = useContext(ThemeContext);
+  const onSubmit = () => {
+    props.history.push("/result");
+  };
   const onClick = () => {
-    nowPage < problems.length && setNowPage(nowPage + 1);
+    nowPage < problems.length ? setNowPage(nowPage + 1) : onSubmit();
   };
   return (
     <Wrapper>

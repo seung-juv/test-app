@@ -13,14 +13,15 @@ const Container = styled.div`
   font-weight: bold;
   color: white;
   font-size: 18px;
+  cursor: pointer;
   &:hover {
     opacity: 0.7;
   }
 `;
 
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       {text}
     </Container>
   );
