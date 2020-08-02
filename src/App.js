@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
+import { HashRouter, Route } from "react-router-dom";
+import Intro from "./routes/Intro";
+import Test from "./routes/Test";
+import GlobalStyles from "./Styles/GlobalStyles";
+import theme from "./Styles/theme";
 
-function App() {
+const Wrapper = styled.section`
+  min-width: 350px;
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <HashRouter>
+        <Wrapper>
+          <Route path="/" component={Intro} exact={true} />
+          <Route path="/test" component={Test} exact={true} />
+        </Wrapper>
+      </HashRouter>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
