@@ -88,13 +88,15 @@ const Test = () => {
   const progress = 100 / problems.length * nowPage;
   const theme = useContext(ThemeContext);
   const onClick = () => {
-    setNowPage(nowPage + 1);
+    nowPage < problems.length && setNowPage(nowPage + 1);
   };
   return (
     <Wrapper>
       <ProblemWrapper>
         <ProblemContainer>
-          {problems.map(problem => <Problem key={problem.idx} {...problem} onClick={onClick} />)}
+          {problems.map(problem =>
+            <Problem key={problem.idx} {...problem} nowPage={nowPage} onClick={onClick} />
+          )}
         </ProblemContainer>
       </ProblemWrapper>
       <ProgressContainer>

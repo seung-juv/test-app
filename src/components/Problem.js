@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import TestButton from "./TestButton";
 
-const Wrapper = styled.section`width: 440px;`;
+const Wrapper = styled.section`
+  width: 440px;
+  transform: translateX(${props => (props.nowPage - 1) * -440}px);
+  transition: .25s transform ease-out;
+`;
 
 const Index = styled.h2`
   color: ${props => props.theme.mainColor};
@@ -26,16 +30,16 @@ const ETestButton = styled(TestButton)`
   }
 `;
 
-const Problem = ({ idx = 0, title, test = [], onClick }) => {
+const Problem = ({ idx = 0, title, test = [], nowPage, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper nowPage={nowPage}>
       <Index>
         Q{idx + 1}
       </Index>
       <Title>
         {title}
       </Title>
-      {test.map(test => <ETestButton text={test.text} onClick={onClick} />)}
+      {test.map((test, idx) => <ETestButton key={idx} text={test.text} onClick={onClick} />)}
     </Wrapper>
   );
 };
