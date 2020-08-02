@@ -6,6 +6,7 @@ import Test from "../routes/Test";
 import GlobalStyles from "../Styles/GlobalStyles";
 import theme from "../Styles/theme";
 import Result from "../routes/Result";
+import Loading from "../routes/Loading";
 
 const Wrapper = styled.section`
   min-width: 350px;
@@ -26,6 +27,7 @@ const App = () => {
           <Wrapper>
             <Route path="/" component={Intro} exact />
             <Route path="/test" component={Test} exact />
+            <Route path="/loading" component={Loading} exact />
             <Route path="/result" component={Result} />
           </Wrapper>
         </HashRouter>

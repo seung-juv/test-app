@@ -79,9 +79,6 @@ const Test = props => {
   const [animate, setAnimate] = useState(false);
   const progress = 100 / problems.length * nowPage;
   const theme = useContext(ThemeContext);
-  const onSubmit = () => {
-    props.history.push("/result");
-  };
   const onClick = () => {
     if (nowPage < problems.length) {
       setNowPage(nowPage + 1);
@@ -90,7 +87,7 @@ const Test = props => {
         setAnimate(false);
       }, 500);
     } else {
-      onSubmit();
+      props.history.push("/Loading");
     }
   };
   return (
